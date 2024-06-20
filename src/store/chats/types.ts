@@ -9,6 +9,7 @@ export type ChatsSlice = {
 
 export type Chat = {
   id: string
+  updatedDate: string
   messages: Message[]
 }
 

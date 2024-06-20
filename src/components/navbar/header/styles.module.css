@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  .reversedIconButton {
+    transform: rotate(180deg);
+  }
+}

@@ -17,11 +17,14 @@ export const appSlice = createSlice({
       };
     },
     toggleNavbar: (state) => {
-      state.isNavbarOpened = ! state.isNavbarOpened
+      state.isNavbarOpened = !state.isNavbarOpened
     },
+    setIsNavbarOpened: (state, { payload }: PayloadAction<AppActionPayloads['setIsNavbarOpened']>) => {
+      state.isNavbarOpened = payload
+    }
   },
 });
 
-export const { setAppOptions, toggleNavbar } = appSlice.actions;
+export const { setAppOptions, toggleNavbar, setIsNavbarOpened } = appSlice.actions;
 
 export default appSlice.reducer;

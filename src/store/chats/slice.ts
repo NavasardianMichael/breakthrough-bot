@@ -21,10 +21,11 @@ export const chatsSlice = createSlice({
         list: payload,
       };
     },
-    addChat: (state, { payload: { id, messages } }: PayloadAction<ChatsActionPayloads['applyMessagesToChat']>) => {
+    addChat: (state, { payload: { id, messages, updatedDate } }: PayloadAction<ChatsActionPayloads['applyMessagesToChat']>) => {
       if (!state.list.byId[id]) {
         state.list.byId[id] = {
           id,
+          updatedDate,
           messages,
         };
         state.list.allIds.push(id)

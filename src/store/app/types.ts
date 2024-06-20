@@ -5,4 +5,5 @@ export type AppSlice = {
 
 export type AppActionPayloads = {
   setAppOptions: Partial<AppSlice>
+  setIsNavbarOpened: AppSlice['isNavbarOpened']
 }

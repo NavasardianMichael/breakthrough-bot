@@ -1,7 +1,7 @@
 import { FC } from "react";
-import styles from "./styles.module.css";
-import ChatHandlers from './chat-handlers';
+import ChatHandlers from "./chat-handlers";
 import Logo from "assets/images/logo.svg";
+import styles from "./styles.module.css";
 
 const Header: FC = () => {
   return (

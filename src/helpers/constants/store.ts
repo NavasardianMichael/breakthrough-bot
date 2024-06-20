@@ -10,6 +10,7 @@ export const CHATS_LIST_INITIAL_STATE: ChatsSlice['list'] = {
   byId: {
     'temp-id-1': {
       id: 'temp-id-1',
+      updatedDate: '24.11.1997',
       messages: [
         {
           id: 'temp-message-id-1',
