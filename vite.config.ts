@@ -15,6 +15,7 @@ export default defineConfig({
       include: "**/*.svg",
     }),
   ],
+  base: '/breakthrough-bot/',
   server: {
     open: true,
     port: 5151,
