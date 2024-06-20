@@ -1,22 +1,47 @@
-import { FC } from "react";
+import BaseButton from "components/shared/base-button";
+import { useDateCategorizedChats } from "hooks/useDateCategorizedChats";
+import { FC, MouseEventHandler, useCallback } from "react";
 import styles from "./styles.module.css";
-import { useAppSelector } from "hooks/useAppSelector";
-import { selectChatsList } from "store/chats/selectors";
-import { categorizeDate } from 'helpers/utils/commons';
-import BaseButton from 'components/shared/base-button';
+import { useDispatch } from "react-redux";
+import { setCurrentChatId } from "store/chats/slice";
 
 const ChatsHistory: FC = () => {
-  const chatsList = useAppSelector(selectChatsList);
+  const dispatch = useDispatch();
+  const categorizedChats = useDateCategorizedChats();
+
+  const handleChatClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (e) => {
+      const { name: chatId } = e.currentTarget;
+      dispatch(setCurrentChatId(chatId));
+    },
+    [dispatch]
+  );
 
   return (
     <div className={styles.chatsHistory}>
-      {chatsList.allIds.map((chatId) => {
-        const { id, updatedDate, messages } = chatsList.byId[chatId];
+      {categorizedChats.map((category) => {
+        const [name, messages] = category;
         return (
-          <BaseButton key={id} className={styles.chat}>
-            <p className={styles.category}>{categorizeDate(updatedDate)}</p>
-            <p className={styles.message}>{messages.length ? messages[messages.length - 1].value : 'What are you looking to accomplish? Ask me a question and I will do my best to provide a meaningful answer.'}</p>
-          </BaseButton>
+          <div key={name} className={styles.category}>
+            <p className={styles.category}>{name}</p>
+            <div className={styles.chats}>
+              {messages.map((message) => {
+                const { id, messages } = message;
+                return (
+                  <BaseButton
+                    key={id}
+                    className={styles.chat}
+                    onClick={handleChatClick}
+                    name={id}
+                  >
+                    <p className={styles.message}>
+                      {messages[messages.length - 1].value}
+                    </p>
+                  </BaseButton>
+                );
+              })}
+            </div>
+          </div>
         );
       })}
     </div>

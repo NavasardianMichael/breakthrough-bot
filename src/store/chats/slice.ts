@@ -21,8 +21,14 @@ export const chatsSlice = createSlice({
         list: payload,
       };
     },
-    setCurrentChat: (state, { payload }: PayloadAction<ChatsActionPayloads['setCurrentChat']>) => {
+    setCurrentChatId: (state, { payload }: PayloadAction<ChatsActionPayloads['setCurrentChatId']>) => {
       state.list.currentId = payload
+    },
+    appendMessageToCurrentChat: (state, { payload }: PayloadAction<ChatsActionPayloads['appendMessageToCurrentChat']>) => {
+      state.list.byId[state.list.currentId].messages = [
+        ...state.list.byId[state.list.currentId].messages,
+        payload
+      ]
     },
     addChat: (state, { payload: { id, messages, updatedDate } }: PayloadAction<ChatsActionPayloads['applyMessagesToChat']>) => {
       if (!state.list.byId[id]) {
@@ -65,6 +71,6 @@ export const chatsSlice = createSlice({
   },
 });
 
-export const { setChatsList, setCurrentChat, setChatOptions, addChat } = chatsSlice.actions;
+export const { setChatsList, setCurrentChatId, appendMessageToCurrentChat, setChatOptions, addChat } = chatsSlice.actions;
 
 export default chatsSlice.reducer;

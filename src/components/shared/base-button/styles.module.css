@@ -4,4 +4,10 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  transition: 0.2s;
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: default;
+  }
 }

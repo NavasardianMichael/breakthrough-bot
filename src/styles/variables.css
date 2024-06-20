@@ -4,10 +4,9 @@
   --primary-color: #003b5c;
   --secondary-color: #94b7bb;
   --tertiary-color: #f7f5f4;
-  --shape-color: #F7F5F4;
 
   /* sizing */
-  --space-xs: .5rem;
+  --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 1.5rem;
   --space-lg: 2rem;

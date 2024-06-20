@@ -6,7 +6,7 @@ import { useAppDispatch } from "hooks/useAppDispatch";
 import { FC, MouseEventHandler } from "react";
 import { setIsNavbarOpened } from "store/app/slice";
 import styles from "./styles.module.css";
-import { addChat } from 'store/chats/slice';
+import { addChat } from "store/chats/slice";
 
 const ChatHandlers: FC = () => {
   const dispatch = useAppDispatch();
@@ -17,11 +17,13 @@ const ChatHandlers: FC = () => {
   };
 
   const createNewChat: MouseEventHandler<HTMLButtonElement> = () => {
-    dispatch(addChat({
-      id: 'chat-temp-id',
-      updatedDate: new Date().toString(),
-      messages: [],
-    }));
+    dispatch(
+      addChat({
+        id: "chat-temp-id",
+        updatedDate: new Date().toString(),
+        messages: [],
+      })
+    );
   };
 
   return (
