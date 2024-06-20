@@ -22,6 +22,27 @@
 body {
   margin: 0;
   color: var(--text-color);
-  font-family: 'CentraNo2', cursive;
   position: relative;
+
+  &,
+  & button,
+  & textarea {
+    font-family: 'CentraNo2', cursive;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #9b9b9b;
+    border-radius: 6px;
+  }
 }

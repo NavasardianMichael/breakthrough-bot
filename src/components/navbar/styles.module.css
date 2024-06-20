@@ -4,6 +4,7 @@
   left: 0;
   transition: 0.2s;
   height: 100vh;
+  overflow-y: auto;
   background-color: var(--tertiary-color);
   box-shadow: 5px 0px 20px 0px #00000026;
   z-index: 1;

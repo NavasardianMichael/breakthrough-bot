@@ -23,6 +23,7 @@ export type Role = (typeof ROLES)[keyof typeof ROLES]
 
 export type ChatsActionPayloads = {
   setChatsList: ChatsSlice['list']
+  setCurrentChat: Chat['id']
   setChatOptions: PartialButRequired<Chat, 'id'>
   applyMessagesToChat: Chat
 }
