@@ -1,2 +1,12 @@
 .chatsHistory {
+    .category {
+        color: #707070;
+        font-size: 14px;
+        font-weight: bold;
+
+        .message {
+            color: var(--text-color);
+            font-size: var(--space-sm);
+        }
+    }
 }

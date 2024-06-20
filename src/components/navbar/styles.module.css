@@ -15,6 +15,6 @@
   gap: var(--space-sm);
 
   &.closed {
-    transform: translateX(-100%);
+    transform: translateX(calc(-100% - 20px));
   }
 }

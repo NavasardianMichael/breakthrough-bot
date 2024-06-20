@@ -20,6 +20,7 @@ const MessageInputBox: FC = () => {
             className={styles.messageInput}
             value={message}
             onChange={handleMessageChange}
+            rows={1}
           />
           <BaseButton>
             <SendMessageIcon />

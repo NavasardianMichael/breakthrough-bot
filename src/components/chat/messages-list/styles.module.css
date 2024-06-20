@@ -13,11 +13,11 @@
         .message {
             margin-top: 0;
             margin-bottom: 0;
-            width: max-content;
-            padding: var(--space-sm);
+            display: flex;
             max-width: 100%;
-
+            
             &.user {
+                padding: var(--space-sm);
                 margin-left: auto;
                 background-color: var(--tertiary-color);
                 text-align: right;
