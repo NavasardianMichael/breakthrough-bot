@@ -1,0 +1,27 @@
+@font-face {
+  font-family: 'CentraNo2';
+  src: url('../assets/fonts/CentraNo2-Bold/CentraNo2-Bold.woff') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CentraNo2';
+  src: url('../assets/fonts/CentraNo2-Book/CentraNo2-Book.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'CentraNo2';
+  src: url('../assets/fonts/CentraNo2-Light/CentraNo2-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+body {
+  margin: 0;
+  color: var(--text-color);
+  font-family: 'CentraNo2', cursive;
+  position: relative;
+}

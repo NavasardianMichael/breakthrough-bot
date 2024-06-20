@@ -1,0 +1,23 @@
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-sm);
+    border-bottom: 1px solid var(--shape-color);
+
+    .primaryText {
+        font-size: 28px;
+        font-weight: 300;
+        margin-top: 0;
+        margin-bottom: 0;
+
+        .firstPart {
+            color: var(--primary-color);
+        }
+
+        .secondPart {
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+    }
+}

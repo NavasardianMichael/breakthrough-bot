@@ -1,0 +1,42 @@
+.container {
+    flex-grow: 1;
+
+    .messagesList {
+        max-width: 746px;
+        margin: auto;
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-lg);
+
+        .message {
+            margin-top: 0;
+            margin-bottom: 0;
+            width: max-content;
+            padding: var(--space-sm);
+            max-width: 100%;
+
+            &.user {
+                margin-left: auto;
+                background-color: var(--tertiary-color);
+                text-align: right;
+            }
+
+            &.system {
+
+            }
+        }
+    }
+}
+
+.emptyConversationHint {
+    margin: auto;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    color: #707070;
+    font-size: 30px;
+    width: 60%;
+    max-width: 840px;
+}

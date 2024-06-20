@@ -1,0 +1,28 @@
+.wrapper {
+    background-color: var(--shape-color);
+    padding: var(--space-md);
+    
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        
+        .messagesInputBox {
+            overflow-y: hidden;
+            width: 60%;
+            background-color: #fff;
+            display: flex;
+            gap: var(--space-sm);
+            padding: var(--space-sm);
+            border: 1px solid #D7D7D7;
+            word-break: break-word;
+            
+            .messageInput {
+                all: unset;
+                flex-grow: 1;
+                overflow: hidden;
+            }
+        }
+    }
+}
