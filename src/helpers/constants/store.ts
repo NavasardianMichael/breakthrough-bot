@@ -15,7 +15,7 @@ export const CHATS_LIST_INITIAL_STATE: ChatsSlice['list'] = {
         {
           id: 'temp-message-id-1',
           role: ROLES.user,
-          value: 'Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color, Give me a random color'
+          value: 'Give me a random color.'
         },
         {
           id: 'temp-message-id-2',
