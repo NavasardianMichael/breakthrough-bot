@@ -4,7 +4,7 @@
   gap: var(--space-lg);
 
   .category {
-    color: #707070;
+    color: var(--secondary-text-color);
     font-size: 14px;
     font-weight: bold;
     margin-top: 0;
@@ -30,7 +30,7 @@
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
-          color: var(--text-color);
+          color: var(--primary-text-color);
           font-size: var(--space-sm);
           margin: 0;
         }

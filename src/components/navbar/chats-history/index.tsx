@@ -4,6 +4,8 @@ import { FC, MouseEventHandler, useCallback } from "react";
 import styles from "./styles.module.css";
 import { useDispatch } from "react-redux";
 import { setCurrentChatId } from "store/chats/slice";
+import { getIsMobileWidth } from 'helpers/utils/app';
+import { setIsNavbarOpened } from 'store/app/slice';
 
 const ChatsHistory: FC = () => {
   const dispatch = useDispatch();
@@ -13,6 +15,7 @@ const ChatsHistory: FC = () => {
     (e) => {
       const { name: chatId } = e.currentTarget;
       dispatch(setCurrentChatId(chatId));
+      if(getIsMobileWidth()) dispatch(setIsNavbarOpened(false))
     },
     [dispatch]
   );

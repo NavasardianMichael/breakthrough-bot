@@ -1,4 +1,4 @@
-import { ChangeEventHandler, FC, FormEventHandler, useState } from "react";
+import { ChangeEventHandler, FC, FormEventHandler, KeyboardEventHandler, useState } from "react";
 import styles from "./styles.module.css";
 import { Message } from "store/chats/types";
 import SendMessageIcon from "assets/icons/arrow-circle-right.svg";
@@ -16,8 +16,12 @@ const MessageInputBox: FC = () => {
     setMessage(e.target.value);
   };
 
-  const sendMessage: FormEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
+    sendMessage()
+  };
+
+  const sendMessage = () => {
     dispatch(
       appendMessageToCurrentChat({
         id: Math.random().toFixed(5),
@@ -28,15 +32,21 @@ const MessageInputBox: FC = () => {
     setMessage("");
   };
 
+  const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
+    if(!e.ctrlKey || e.key !== "Enter" || !message) return;
+    sendMessage()
+  }
+
   return (
     <div className={styles.wrapper}>
-      <form onSubmit={sendMessage}>
+      <form onSubmit={handleSubmit}>
         <div className={styles.messagesInputBox}>
           <textarea
             placeholder="Message BreakthroughBOT"
             className={styles.messageInput}
             value={message}
             onChange={handleMessageChange}
+            onKeyDown={handleKeyDown}
             rows={1}
           />
           <BaseButton disabled={!message}>

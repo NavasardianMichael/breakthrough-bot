@@ -26,5 +26,5 @@ export type ChatsActionPayloads = {
   setCurrentChatId: Chat['id']
   appendMessageToCurrentChat: Message
   setChatOptions: PartialButRequired<Chat, 'id'>
-  applyMessagesToChat: Chat
+  addChat: Chat
 }

@@ -1,11 +1,11 @@
-import { FC, MouseEventHandler, useCallback } from "react";
-import ChatHandlers from "./chat-handlers";
-import Logo from "assets/images/logo.svg";
-import styles from "./styles.module.css";
-import { useAppDispatch } from "hooks/useAppDispatch";
-import { addChat } from "store/chats/slice";
-import BaseButton from "components/shared/base-button";
 import CreateNewChatIcon from "assets/icons/edit.svg";
+import Logo from "assets/images/logo.svg";
+import BaseButton from "components/shared/base-button";
+import { useAppDispatch } from "hooks/useAppDispatch";
+import { FC, MouseEventHandler, useCallback } from "react";
+import { addChat } from "store/chats/slice";
+import ChatHandlers from "./chat-handlers";
+import styles from "./styles.module.css";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -32,7 +32,7 @@ const Header: FC = () => {
         className={styles.createNewChatMobileButton}
         onClick={createNewChat}
       >
-        <CreateNewChatIcon />
+          <CreateNewChatIcon />
       </BaseButton>
       <div className={styles.logoWrapper}>
         <Logo />

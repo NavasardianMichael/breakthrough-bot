@@ -1,11 +1,11 @@
-import { useAppDispatch } from "hooks/useAppDispatch";
 import OpenNavBarIcon from "assets/icons/arrow-right-to-bracket.svg";
 import CreateNewChatIcon from "assets/icons/edit.svg";
-import styles from "./styles.module.css";
 import BaseButton from "components/shared/base-button";
-import { setIsNavbarOpened } from "store/app/slice";
+import { useAppDispatch } from "hooks/useAppDispatch";
 import { FC, MouseEventHandler } from "react";
+import { setIsNavbarOpened } from "store/app/slice";
 import { addChat } from "store/chats/slice";
+import styles from "./styles.module.css";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -32,6 +32,7 @@ const Header: FC = () => {
       >
         <OpenNavBarIcon />
       </BaseButton>
+      
       <BaseButton onClick={createNewChat}>
         <CreateNewChatIcon />
       </BaseButton>

@@ -24,7 +24,7 @@
 
 body {
   margin: 0;
-  color: var(--text-color);
+  color: var(--primary-text-color);
   position: relative;
   word-break: break-word;
 
@@ -46,15 +46,15 @@ body {
 
   /* Handle */
   ::-webkit-scrollbar-thumb {
-    background: #dadada;
+    background: var(--border-color);
     border-radius: 6px;
   }
 
   :focus-visible {
-    outline: 1px dashed #b1b1b1;
+    outline: 1px dashed var(--secondary-text-color);
   }
 
-  @media only screen and (max-width: 768px) {
+  @media only screen and (max-width: 600px) {
     /* For mobile phones: */
     & {
       font-size: 14px;

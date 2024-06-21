@@ -22,7 +22,7 @@ const ChatHandlers: FC<Props> = ({ createNewChat }) => {
   return (
     <div className={styles.chatHandlers}>
       <BaseButton className={styles.handler} onClick={openNavbar}>
-        <OpenNavBarIcon />
+          <OpenNavBarIcon />
       </BaseButton>
       <BaseButton
         className={combineClassNames(

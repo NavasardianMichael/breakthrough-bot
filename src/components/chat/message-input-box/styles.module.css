@@ -1,6 +1,7 @@
 .wrapper {
   background-color: var(--tertiary-color);
   padding: var(--space-md);
+  border-top: 1px solid var(--border-color);
 
   form {
     display: flex;
@@ -11,15 +12,15 @@
     .messagesInputBox {
       overflow-y: hidden;
       width: 60%;
-      min-width: 700px;
+      min-width: 580px;
+      box-sizing: border-box;
       background-color: #fff;
       display: flex;
       gap: var(--space-sm);
       padding: var(--space-sm);
-      border: 1px solid #d7d7d7;
-      word-break: break-word;
+      border: 1px solid var(--border-color);
 
-      @media only screen and (max-width: 768px) {
+      @media only screen and (max-width: 600px) {
         /* For mobile phones: */
         & {
           min-width: 0;
