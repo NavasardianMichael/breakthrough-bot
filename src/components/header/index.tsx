@@ -32,7 +32,7 @@ const Header: FC = () => {
         className={styles.createNewChatMobileButton}
         onClick={createNewChat}
       >
-          <CreateNewChatIcon />
+        <CreateNewChatIcon />
       </BaseButton>
       <div className={styles.logoWrapper}>
         <Logo />

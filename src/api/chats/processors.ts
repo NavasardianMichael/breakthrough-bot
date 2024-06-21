@@ -1,5 +1,5 @@
-import { Chat, ChatsSlice } from 'store/chats/types'
-import { ChatResponse, GetChatsResponse } from './types'
+import { Chat, ChatsSlice, Message } from 'store/chats/types'
+import { ChatResponse, GetChatsResponse, MessageResponse } from './types'
 
 
 export const processChatsListResponse = (response: GetChatsResponse): ChatsSlice['list'] => {
@@ -8,7 +8,7 @@ export const processChatsListResponse = (response: GetChatsResponse): ChatsSlice
       const processedChat = processChatResponse(chat)
       acc.byId[chat.id] = processedChat
       acc.allIds.push(processedChat.id)
-      if(index === arr.length - 1) acc.currentId = chat.id
+      if (index === arr.length - 1) acc.currentId = chat.id
       return acc
     },
     {
@@ -21,4 +21,8 @@ export const processChatsListResponse = (response: GetChatsResponse): ChatsSlice
 
 export const processChatResponse = (chatResponse: ChatResponse): Chat => {
   return chatResponse
+}
+
+export const processMessageResponse = (messageResponse: MessageResponse): Message => {
+  return messageResponse
 }

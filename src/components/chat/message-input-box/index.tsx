@@ -1,11 +1,16 @@
-import { ChangeEventHandler, FC, FormEventHandler, KeyboardEventHandler, useState } from "react";
-import styles from "./styles.module.css";
-import { Message } from "store/chats/types";
 import SendMessageIcon from "assets/icons/arrow-circle-right.svg";
 import BaseButton from "components/shared/base-button";
 import { useAppDispatch } from "hooks/useAppDispatch";
-import { appendMessageToCurrentChat } from "store/chats/slice";
-import { ROLES } from "helpers/constants/chat";
+import {
+  ChangeEventHandler,
+  FC,
+  FormEventHandler,
+  KeyboardEventHandler,
+  useState,
+} from "react";
+import { sendUserMessageThunk } from "store/chats/thunk";
+import { Message } from "store/chats/types";
+import styles from "./styles.module.css";
 
 const MessageInputBox: FC = () => {
   const dispatch = useAppDispatch();
@@ -18,24 +23,18 @@ const MessageInputBox: FC = () => {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    sendMessage()
+    sendMessage();
   };
 
   const sendMessage = () => {
-    dispatch(
-      appendMessageToCurrentChat({
-        id: Math.random().toFixed(5),
-        role: ROLES.user,
-        value: message,
-      })
-    );
+    dispatch(sendUserMessageThunk(message));
     setMessage("");
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if(!e.ctrlKey || e.key !== "Enter" || !message) return;
-    sendMessage()
-  }
+    if (!e.ctrlKey || e.key !== "Enter" || !message) return;
+    sendMessage();
+  };
 
   return (
     <div className={styles.wrapper}>
