@@ -11,12 +11,21 @@
     .messagesInputBox {
       overflow-y: hidden;
       width: 60%;
+      min-width: 700px;
       background-color: #fff;
       display: flex;
       gap: var(--space-sm);
       padding: var(--space-sm);
       border: 1px solid #d7d7d7;
       word-break: break-word;
+
+      @media only screen and (max-width: 768px) {
+        /* For mobile phones: */
+        & {
+          min-width: 0;
+          width: 90%;
+        }
+      }
 
       .messageInput {
         all: unset;

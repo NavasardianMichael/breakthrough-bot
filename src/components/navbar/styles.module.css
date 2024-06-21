@@ -19,3 +19,10 @@
     transform: translateX(calc(-100% - 20px));
   }
 }
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .navbar {
+    width: 100%;
+  }
+}

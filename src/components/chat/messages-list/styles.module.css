@@ -5,10 +5,9 @@
   scrollbar-gutter: stable;
 
   .messagesList {
-    max-width: 746px;
+    max-width: calc(746px + var(--space-sm));
     margin: auto;
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
+    padding: var(--space-lg) var(--space-sm);
     display: flex;
     flex-direction: column;
     gap: var(--space-sm);
@@ -39,6 +38,7 @@
 
       .actions {
         opacity: 0;
+        margin-top: var(--space-xs);
         transition: 0.1s;
         display: flex;
         gap: var(--space-sm);
@@ -49,6 +49,12 @@
       }
 
       &:hover {
+        .actions {
+          opacity: 1;
+        }
+      }
+
+      @media (hover: none) {
         .actions {
           opacity: 1;
         }

@@ -3,3 +3,7 @@ export const combineClassNames = (
 ) => {
   return classNames.filter((className) => !!className).join(" ");
 };
+
+export const copyToClipboard = (newClip: string) => {
+  navigator.clipboard.writeText(newClip)
+}

@@ -1,4 +1,11 @@
 .chatHandlers {
-    display: flex;
-    gap: var(--space-sm);
+  display: flex;
+  gap: var(--space-sm);
+}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  .createNewChatButton {
+    display: none;
+  }
 }
