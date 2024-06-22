@@ -4,17 +4,16 @@ import { ChatResponse, GetChatsResponse, MessageResponse } from './types'
 
 export const processChatsListResponse = (response: GetChatsResponse): ChatsSlice['list'] => {
   return response.reduce(
-    (acc, chat, index, arr) => {
+    (acc, chat) => {
       const processedChat = processChatResponse(chat)
       acc.byId[chat.id] = processedChat
       acc.allIds.push(processedChat.id)
-      if (index === arr.length - 1) acc.currentId = chat.id
       return acc
     },
     {
       byId: {},
       allIds: [],
-      currentId: ''
+      currentChatId: ''
     } as ChatsSlice['list']
   )
 }
@@ -24,5 +23,8 @@ export const processChatResponse = (chatResponse: ChatResponse): Chat => {
 }
 
 export const processMessageResponse = (messageResponse: MessageResponse): Message => {
-  return messageResponse
+  return {
+    ...messageResponse,
+    id: Math.round(Math.random() * 100_000).toString()
+  }
 }

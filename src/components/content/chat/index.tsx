@@ -1,7 +1,7 @@
 import { FC } from "react";
+import MessageInputBox from "./message-input-box";
+import MessagesList from "./messages-list";
 import styles from "./styles.module.css";
-import MessagesList from './messages-list';
-import MessageInputBox from './message-input-box';
 
 const Chat: FC = () => {
   return (

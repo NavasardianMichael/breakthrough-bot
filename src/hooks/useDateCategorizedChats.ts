@@ -16,6 +16,7 @@ export const useDateCategorizedChats = () => {
             acc[category].push({
                 id: chat.id,
                 updatedDate: chat.updatedDate,
+                isPromptPending: false,
                 messages: [chat.messages[chat.messages.length - 1] ?? TEMP_MESSAGE]
             })
             return acc

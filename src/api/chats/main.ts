@@ -1,12 +1,13 @@
-import { CHATS_LIST_INITIAL_STATE } from 'helpers/constants/store';
 import OpenAI from 'openai';
 import { ChatsSlice, Message } from 'store/chats/types';
 import { processMessageResponse } from './processors';
+import { INITIAL_CHATS_LIST } from 'helpers/constants/chat';
+import { sleep } from 'openai/core.mjs';
 
 export const getChatsList = async (): Promise<ChatsSlice['list']> => {
   // const { data } = await axiosInstance.get(`/chats`)
   // processChatsListResponse
-  return CHATS_LIST_INITIAL_STATE
+  return INITIAL_CHATS_LIST
 }
 
 const openai = new OpenAI({
@@ -27,5 +28,6 @@ export const promptToOpenAI = async (message: Message['value']): Promise<Message
 export const saveMessage = async (message: Message): Promise<Message> => {
   // const { data } = await axiosInstance.post<MessageResponse>(`/chats`)
   const processedMessage = processMessageResponse(message)
+  await sleep(2000)
   return processedMessage
 }

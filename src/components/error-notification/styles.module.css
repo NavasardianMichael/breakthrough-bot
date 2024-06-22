@@ -1,0 +1,11 @@
+.errorNotification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #ffa5a5;
+  z-index: 2;
+  width: 60%;
+  margin: auto;
+  border-radius: 10px;
+  display: flex;
+}

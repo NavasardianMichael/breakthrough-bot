@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./styles.module.css";
-import Header from 'components/header';
-import Chat from 'components/chat';
+import Header from "./header";
+import Chat from "./chat";
 
 const Content: FC = () => {
   return (

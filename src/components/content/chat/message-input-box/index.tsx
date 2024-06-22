@@ -6,16 +6,40 @@ import {
   FC,
   FormEventHandler,
   KeyboardEventHandler,
+  useMemo,
   useState,
 } from "react";
 import { sendUserMessageThunk } from "store/chats/thunk";
 import { Message } from "store/chats/types";
 import styles from "./styles.module.css";
+import { useAppSelector } from "hooks/useAppSelector";
+import {
+  selectIsAppendedMessageConfirmed,
+  selectIsCurrentChatPromptPending,
+} from "store/chats/selectors";
 
 const MessageInputBox: FC = () => {
   const dispatch = useAppDispatch();
+  const isAppendedMessageConfirmed = useAppSelector(
+    selectIsAppendedMessageConfirmed
+  );
+  const isCurrentChatPromptPending = useAppSelector(
+    selectIsCurrentChatPromptPending
+  );
 
   const [message, setMessage] = useState<Message["value"]>("");
+
+  const isSendMessageDisabled = useMemo(() => {
+    console.log({
+      message,
+      isAppendedMessageConfirmed,
+      isCurrentChatPromptPending,
+    });
+
+    return (
+      !message || !isAppendedMessageConfirmed || isCurrentChatPromptPending
+    );
+  }, [isAppendedMessageConfirmed, isCurrentChatPromptPending, message]);
 
   const handleMessageChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setMessage(e.target.value);
@@ -32,7 +56,7 @@ const MessageInputBox: FC = () => {
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (!e.ctrlKey || e.key !== "Enter" || !message) return;
+    if (!e.ctrlKey || e.key !== "Enter" || isSendMessageDisabled) return;
     sendMessage();
   };
 
@@ -48,7 +72,7 @@ const MessageInputBox: FC = () => {
             onKeyDown={handleKeyDown}
             rows={1}
           />
-          <BaseButton disabled={!message}>
+          <BaseButton disabled={isSendMessageDisabled}>
             <SendMessageIcon />
           </BaseButton>
         </div>

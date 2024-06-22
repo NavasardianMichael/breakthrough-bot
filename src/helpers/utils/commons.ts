@@ -7,3 +7,5 @@ export const combineClassNames = (
 export const copyToClipboard = (newClip: string) => {
   navigator.clipboard.writeText(newClip)
 }
+
+export const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));

@@ -2,8 +2,10 @@ import { ROLES } from 'helpers/constants/chat'
 import { Normalized, PartialButRequired } from 'helpers/types/commons'
 
 export type ChatsSlice = {
-  pendingChatId: Chat['id']
   list: Normalized<Chat>
+  currentChatId: Chat['id']
+  pendingChatId: Chat['id']
+  pendingMessageId: Message['id']
   errorMessage: Error['message']
 }
 
@@ -11,6 +13,7 @@ export type Chat = {
   id: string
   updatedDate: string
   messages: Message[]
+  isPromptPending: boolean
 }
 
 export type Message = {
@@ -27,4 +30,7 @@ export type ChatsActionPayloads = {
   appendMessageToCurrentChat: Message
   setChatOptions: PartialButRequired<Chat, 'id'>
   addChat: Chat
+  setIsCurrentChatPromptPending: Chat['isPromptPending']
+  setPendingMessageId: Message['id']
+  confirmAppendedMessage: Message
 }

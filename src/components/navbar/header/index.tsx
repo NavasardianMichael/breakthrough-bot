@@ -20,6 +20,7 @@ const Header: FC = () => {
         id: `chat-temp-id-${Math.round(Math.random() * 100_000)}`,
         updatedDate: new Date().toString(),
         messages: [],
+        isPromptPending: false,
       })
     );
   };
@@ -32,7 +33,7 @@ const Header: FC = () => {
       >
         <OpenNavBarIcon />
       </BaseButton>
-      
+
       <BaseButton onClick={createNewChat}>
         <CreateNewChatIcon />
       </BaseButton>

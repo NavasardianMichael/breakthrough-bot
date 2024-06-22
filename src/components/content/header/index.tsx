@@ -17,6 +17,7 @@ const Header: FC = () => {
           id: "chat-temp-id",
           updatedDate: new Date().toString(),
           messages: [],
+          isPromptPending: false,
         })
       );
     }, [dispatch]);
