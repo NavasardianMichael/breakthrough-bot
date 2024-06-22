@@ -6,6 +6,7 @@ import { FC, MouseEventHandler, useCallback } from "react";
 import { addChat } from "store/chats/slice";
 import ChatHandlers from "./chat-handlers";
 import styles from "./styles.module.css";
+import { generateRandomId } from "helpers/utils/commons";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -14,7 +15,7 @@ const Header: FC = () => {
     useCallback(() => {
       dispatch(
         addChat({
-          id: "chat-temp-id",
+          id: generateRandomId("chat"),
           updatedDate: new Date().toString(),
           messages: [],
           isPromptPending: false,

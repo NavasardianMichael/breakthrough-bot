@@ -9,7 +9,7 @@ export const selectCurrentChat = (state: RootState) => {
 
 export const selectIsAppendedMessageConfirmed = (state: RootState) => {
     const messages = state.chats.list.byId[state.chats.currentChatId].messages
-    return state.chats.list.byId[state.chats.currentChatId].messages[messages.length - 1].id !== TEMP_MESSAGE.id
+    return state.chats.list.byId[state.chats.currentChatId].messages[messages.length - 1]?.id !== TEMP_MESSAGE.id
 }
 
 export const selectCurrentChatId = (state: RootState) => state.chats.currentChatId

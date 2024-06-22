@@ -6,6 +6,7 @@ import { FC, MouseEventHandler } from "react";
 import { setIsNavbarOpened } from "store/app/slice";
 import { addChat } from "store/chats/slice";
 import styles from "./styles.module.css";
+import { generateRandomId } from "helpers/utils/commons";
 
 const Header: FC = () => {
   const dispatch = useAppDispatch();
@@ -17,7 +18,7 @@ const Header: FC = () => {
   const createNewChat: MouseEventHandler<HTMLButtonElement> = () => {
     dispatch(
       addChat({
-        id: `chat-temp-id-${Math.round(Math.random() * 100_000)}`,
+        id: generateRandomId("chat"),
         updatedDate: new Date().toString(),
         messages: [],
         isPromptPending: false,

@@ -1,5 +1,6 @@
 import { Chat, ChatsSlice, Message } from 'store/chats/types'
 import { ChatResponse, GetChatsResponse, MessageResponse } from './types'
+import { generateRandomId } from 'helpers/utils/commons'
 
 
 export const processChatsListResponse = (response: GetChatsResponse): ChatsSlice['list'] => {
@@ -25,6 +26,6 @@ export const processChatResponse = (chatResponse: ChatResponse): Chat => {
 export const processMessageResponse = (messageResponse: MessageResponse): Message => {
   return {
     ...messageResponse,
-    id: Math.round(Math.random() * 100_000).toString()
+    id: generateRandomId('message')
   }
 }
