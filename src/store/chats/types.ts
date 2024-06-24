@@ -1,5 +1,5 @@
 import { ROLES } from 'helpers/constants/chat'
-import { Normalized, PartialButRequired } from 'helpers/types/commons'
+import { Normalized } from 'helpers/types/commons'
 
 export type ChatsSlice = {
   list: Normalized<Chat>
@@ -26,11 +26,10 @@ export type Role = (typeof ROLES)[keyof typeof ROLES]
 
 export type ChatsActionPayloads = {
   setChatsList: ChatsSlice['list']
-  setCurrentChatId: Chat['id']
-  appendMessageToCurrentChat: Message
-  setChatOptions: PartialButRequired<Chat, 'id'>
   addChat: Chat
-  setIsCurrentChatPromptPending: Chat['isPromptPending']
+  setCurrentChatId: Chat['id']
+  setIsChatPromptPending: Pick<Chat, 'id' | 'isPromptPending'>
   setPendingMessageId: Message['id']
-  confirmAppendedMessage: Message
+  appendMessageToChat: { chatId: Chat['id'], message: Message }
+  confirmAppendedMessage: { chatId: Chat['id'], message: Message }
 }

@@ -1,11 +1,37 @@
 .errorNotification {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: var(--space-xs);
   left: 0;
-  background-color: #ffa5a5;
+  right: 0;
   z-index: 2;
-  width: 60%;
-  margin: auto;
-  border-radius: 10px;
   display: flex;
+  align-items: center;
+  animation: slide-left 1s ease-in-out;
+  width: 100%;
+
+  .errorMessage {
+    transform: translateX(-50%);
+    position: relative;
+    left: 50%;
+    margin: auto;
+    background-color: rgb(253, 48, 48);
+    padding: var(--space-sm) var(--space-lg);
+    width: max-content;
+    margin: 0;
+    border-radius: 4px;
+    text-align: center;
+
+    a {
+      color: inherit;
+    }
+  }
+}
+
+@keyframes slide-left {
+  from {
+    top: -100%;
+  }
+  to {
+    top: var(--space-xs);
+  }
 }

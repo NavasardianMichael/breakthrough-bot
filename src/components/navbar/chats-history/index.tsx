@@ -27,13 +27,13 @@ const ChatsHistory: FC = () => {
   return (
     <div className={styles.chatsHistory}>
       {categorizedChats.map((category) => {
-        const [name, messages] = category;
+        const [name, chats] = category;
         return (
           <div key={name} className={styles.category}>
             <p className={styles.category}>{name}</p>
             <div className={styles.chats}>
-              {messages.map((message) => {
-                const { id, messages } = message;
+              {chats.map((chat) => {
+                const { id, messages } = chat;
                 return (
                   <BaseButton
                     key={id}

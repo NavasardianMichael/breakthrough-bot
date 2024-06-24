@@ -27,17 +27,17 @@ export const chatsSlice = createSlice({
     setCurrentChatId: (state, { payload }: PayloadAction<ChatsActionPayloads['setCurrentChatId']>) => {
       state.currentChatId = payload
     },
-    setIsCurrentChatPromptPending: (state, { payload }: PayloadAction<ChatsActionPayloads['setIsCurrentChatPromptPending']>) => {
-      state.list.byId[state.currentChatId].isPromptPending = payload
+    setIsChatPromptPending: (state, { payload: { id, isPromptPending } }: PayloadAction<ChatsActionPayloads['setIsChatPromptPending']>) => {
+      state.list.byId[id].isPromptPending = isPromptPending
     },
-    confirmAppendedMessage: (state, { payload }: PayloadAction<ChatsActionPayloads['confirmAppendedMessage']>) => {
-      const messages = state.list.byId[state.currentChatId].messages
-      state.list.byId[state.currentChatId].messages[messages.length - 1] = payload
+    confirmAppendedMessage: (state, { payload: { chatId, message } }: PayloadAction<ChatsActionPayloads['confirmAppendedMessage']>) => {
+      const messages = state.list.byId[chatId].messages
+      state.list.byId[chatId].messages[messages.length - 1] = message
     },
-    appendMessageToCurrentChat: (state, { payload }: PayloadAction<ChatsActionPayloads['appendMessageToCurrentChat']>) => {
-      state.list.byId[state.currentChatId].messages = [
-        ...state.list.byId[state.currentChatId].messages,
-        payload
+    appendMessageToChat: (state, { payload: { chatId, message } }: PayloadAction<ChatsActionPayloads['appendMessageToChat']>) => {
+      state.list.byId[chatId].messages = [
+        ...state.list.byId[chatId].messages,
+        message
       ]
     },
     addChat: (state, { payload: { id, messages, updatedDate, isPromptPending } }: PayloadAction<ChatsActionPayloads['addChat']>) => {
@@ -57,12 +57,6 @@ export const chatsSlice = createSlice({
       }
       state.currentChatId = id
     },
-    setChatOptions: (state, { payload }: PayloadAction<ChatsActionPayloads['setChatOptions']>) => {
-      state.list.byId[payload.id] = {
-        ...state.list.byId[payload.id],
-        ...payload,
-      };
-    },
   },
   extraReducers: (builder) => {
     // Generic cases triggered for all thunks
@@ -76,8 +70,6 @@ export const chatsSlice = createSlice({
         chatsActionTypeMatcher('/rejected'),
         (state, action: PayloadAction<Error>) => {
           state.pendingChatId = '';
-          console.log({ action });
-
           state.errorMessage = action.payload.message ?? '';
         }
       );
@@ -93,10 +85,9 @@ export const chatsSlice = createSlice({
 export const {
   setChatsList,
   setCurrentChatId,
-  setIsCurrentChatPromptPending,
-  appendMessageToCurrentChat,
+  setIsChatPromptPending,
+  appendMessageToChat,
   confirmAppendedMessage,
-  setChatOptions,
   addChat
 } = chatsSlice.actions;
 

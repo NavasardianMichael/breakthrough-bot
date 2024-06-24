@@ -20,8 +20,6 @@ export const promptToOpenAI = async (message: Message['value']): Promise<Message
     messages: [{ role: "system", content: "You are a helpful assistant." }, { role: "user", content: message }],
     model: "gpt-3.5-turbo",
   });
-  console.log({ completion });
-
   return completion.choices[0].message.content as Message['value']
 }
 

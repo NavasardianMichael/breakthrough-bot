@@ -14,12 +14,14 @@ import { Message } from "store/chats/types";
 import styles from "./styles.module.css";
 import { useAppSelector } from "hooks/useAppSelector";
 import {
+  selectCurrentChatId,
   selectIsAppendedMessageConfirmed,
   selectIsCurrentChatPromptPending,
 } from "store/chats/selectors";
 
 const MessageInputBox: FC = () => {
   const dispatch = useAppDispatch();
+  const currentChatId = useAppSelector(selectCurrentChatId);
   const isAppendedMessageConfirmed = useAppSelector(
     selectIsAppendedMessageConfirmed
   );
@@ -27,22 +29,16 @@ const MessageInputBox: FC = () => {
     selectIsCurrentChatPromptPending
   );
 
-  const [message, setMessage] = useState<Message["value"]>("");
+  const [messageText, setMessageText] = useState<Message["value"]>("");
 
   const isSendMessageDisabled = useMemo(() => {
-    console.log({
-      message,
-      isAppendedMessageConfirmed,
-      isCurrentChatPromptPending,
-    });
-
     return (
-      !message || !isAppendedMessageConfirmed || isCurrentChatPromptPending
+      !messageText || !isAppendedMessageConfirmed || isCurrentChatPromptPending
     );
-  }, [isAppendedMessageConfirmed, isCurrentChatPromptPending, message]);
+  }, [isAppendedMessageConfirmed, isCurrentChatPromptPending, messageText]);
 
   const handleMessageChange: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
-    setMessage(e.target.value);
+    setMessageText(e.target.value);
   };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
@@ -51,8 +47,13 @@ const MessageInputBox: FC = () => {
   };
 
   const sendMessage = () => {
-    dispatch(sendUserMessageThunk(message));
-    setMessage("");
+    dispatch(
+      sendUserMessageThunk({
+        chatId: currentChatId,
+        messageText,
+      })
+    );
+    setMessageText("");
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
@@ -67,7 +68,7 @@ const MessageInputBox: FC = () => {
           <textarea
             placeholder="Message BreakthroughBOT"
             className={styles.messageInput}
-            value={message}
+            value={messageText}
             onChange={handleMessageChange}
             onKeyDown={handleKeyDown}
             rows={1}
