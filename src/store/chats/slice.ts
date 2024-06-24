@@ -27,9 +27,6 @@ export const chatsSlice = createSlice({
     setCurrentChatId: (state, { payload }: PayloadAction<ChatsActionPayloads['setCurrentChatId']>) => {
       state.currentChatId = payload
     },
-    // setPendingMessageId: (state, { payload }: PayloadAction<ChatsActionPayloads['setPendingMessageId']>) => {
-    //   state.pendingMessageId = payload
-    // },
     setIsCurrentChatPromptPending: (state, { payload }: PayloadAction<ChatsActionPayloads['setIsCurrentChatPromptPending']>) => {
       state.list.byId[state.currentChatId].isPromptPending = payload
     },

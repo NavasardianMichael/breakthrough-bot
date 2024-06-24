@@ -20,6 +20,7 @@
         transition: 0.2s;
         border-radius: 4px;
 
+        &.active,
         &:hover {
           background-color: #dddddd;
         }

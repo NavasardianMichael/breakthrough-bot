@@ -13,7 +13,7 @@ export const TEMP_MESSAGE: Message = {
 
 export const INITIAL_CHAT: Chat = {
     id: 'temp-id-1',
-    updatedDate: '1997-11-24',
+    updatedDate: '2024-06-23',
     isPromptPending: false,
     messages: [
         {

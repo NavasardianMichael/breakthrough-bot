@@ -4,18 +4,22 @@ import { FC, MouseEventHandler, useCallback } from "react";
 import styles from "./styles.module.css";
 import { useDispatch } from "react-redux";
 import { setCurrentChatId } from "store/chats/slice";
-import { getIsMobileWidth } from 'helpers/utils/app';
-import { setIsNavbarOpened } from 'store/app/slice';
+import { getIsMobileWidth } from "helpers/utils/app";
+import { setIsNavbarOpened } from "store/app/slice";
+import { combineClassNames } from "helpers/utils/commons";
+import { useAppSelector } from "hooks/useAppSelector";
+import { selectCurrentChatId } from "store/chats/selectors";
 
 const ChatsHistory: FC = () => {
   const dispatch = useDispatch();
   const categorizedChats = useDateCategorizedChats();
+  const currentChatId = useAppSelector(selectCurrentChatId);
 
   const handleChatClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (e) => {
       const { name: chatId } = e.currentTarget;
       dispatch(setCurrentChatId(chatId));
-      if(getIsMobileWidth()) dispatch(setIsNavbarOpened(false))
+      if (getIsMobileWidth()) dispatch(setIsNavbarOpened(false));
     },
     [dispatch]
   );
@@ -33,7 +37,10 @@ const ChatsHistory: FC = () => {
                 return (
                   <BaseButton
                     key={id}
-                    className={styles.chat}
+                    className={combineClassNames(
+                      styles.chat,
+                      id === currentChatId && styles.active
+                    )}
                     onClick={handleChatClick}
                     name={id}
                   >
