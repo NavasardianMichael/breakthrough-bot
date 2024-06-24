@@ -15,18 +15,7 @@ export const INITIAL_CHAT: Chat = {
     id: 'temp-id-1',
     updatedDate: '2024-06-23',
     isPromptPending: false,
-    messages: [
-        {
-            id: 'temp-message-id-1',
-            role: ROLES.user,
-            value: 'Give me a random color.'
-        },
-        {
-            id: 'temp-message-id-2',
-            role: ROLES.system,
-            value: 'Yes of course, here are they: ...'
-        },
-    ]
+    messages: []
 }
 
 export const INITIAL_CHATS_LIST: ChatsSlice['list'] = {

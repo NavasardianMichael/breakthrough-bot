@@ -14,9 +14,10 @@
     position: relative;
     left: 50%;
     margin: auto;
-    background-color: rgb(253, 48, 48);
+    background-color: var(--error-color);
+    color: #ffff;
     padding: var(--space-sm) var(--space-lg);
-    width: max-content;
+    max-width: 90%;
     margin: 0;
     border-radius: 4px;
     text-align: center;

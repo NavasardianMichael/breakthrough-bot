@@ -11,7 +11,7 @@ export const getChatsList = async (): Promise<ChatsSlice['list']> => {
 }
 
 const openai = new OpenAI({
-  // apiKey: import.meta.env.VITE_OPEN_AI_API_KEY,
+  apiKey: import.meta.env.VITE_OPEN_AI_API_KEY,
   dangerouslyAllowBrowser: true
 });
 
