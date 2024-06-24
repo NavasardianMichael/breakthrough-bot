@@ -1,10 +1,10 @@
 import { AxiosError, isAxiosError } from 'axios'
 import { createAppAsyncThunk } from 'helpers/utils/store'
-import { getChatsList, saveMessage } from 'api/chats/main'
+import { getChatsList, promptToOpenAI, saveMessage } from 'api/chats/main'
 import { appendMessageToCurrentChat, confirmAppendedMessage, setChatsList, setIsCurrentChatPromptPending } from './slice'
 import { ChatsSlice, Message } from './types'
 import { ROLES, TEMP_MESSAGE } from 'helpers/constants/chat'
-import { sleep } from 'openai/core.mjs'
+// import { sleep } from 'openai/core.mjs'
 
 export const getChatsListThunk = createAppAsyncThunk<ChatsSlice['list'], void>(
   'chats/getChatsList',
@@ -38,9 +38,9 @@ export const sendUserMessageThunk = createAppAsyncThunk<void, Message['value']>(
 
       dispatch(setIsCurrentChatPromptPending(true))
 
-      // const aiMessage = await promptToOpenAI(confirmedUserMessage.value)
-      const aiMessage = TEMP_MESSAGE.value
-      await sleep(2000)
+      const aiMessage = await promptToOpenAI(confirmedUserMessage.value)
+      // const aiMessage = TEMP_MESSAGE.value
+      // await sleep(2000)
       const tempAIMessage = {
         id: TEMP_MESSAGE.id,
         role: ROLES.system,
