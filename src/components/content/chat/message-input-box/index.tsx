@@ -50,15 +50,17 @@ const MessageInputBox: FC = () => {
     dispatch(
       sendUserMessageThunk({
         chatId: currentChatId,
-        messageText,
+        messageText: messageText.trim(),
       })
     );
     setMessageText("");
   };
 
   const handleKeyDown: KeyboardEventHandler<HTMLTextAreaElement> = (e) => {
-    if (!e.ctrlKey || e.key !== "Enter" || isSendMessageDisabled) return;
-    sendMessage();
+    if (e.key === "Enter" && !isSendMessageDisabled) {
+      e.preventDefault();
+      sendMessage();
+    }
   };
 
   return (
