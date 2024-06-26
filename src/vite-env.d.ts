@@ -1,2 +1,2 @@
 /// <reference types="vite/client" />
-declare const __API_BASE: string
+declare module 'api/client/Client';

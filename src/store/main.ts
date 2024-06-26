@@ -7,7 +7,7 @@ export const store = configureStore({
   reducer: {
     [STATE_SLICE_NAMES.app]: appReducer,
     [STATE_SLICE_NAMES.chats]: chatsReducer,
-  },
+  }
 })
 
 export type RootState = ReturnType<typeof store.getState>

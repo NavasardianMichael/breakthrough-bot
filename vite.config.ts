@@ -18,6 +18,6 @@ export default defineConfig({
   base: '/breakthrough-bot/',
   server: {
     open: true,
-    port: 5151,
+    port: 3000,
   },
 });
