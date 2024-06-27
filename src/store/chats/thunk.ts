@@ -43,7 +43,10 @@ export const sendUserMessageThunk = createAppAsyncThunk<void, { chatId: Chat['id
       }))
 
       // AI Response Flow
-      const aiMessage = await promptToOpenAI(confirmedUserMessage.value)
+      // const aiMessage = await promptToOpenAI(confirmedUserMessage.value)
+      console.log({confirmedUserMessage});
+      
+      const aiMessage = TEMP_MESSAGE.value
       const tempAIMessage = {
         id: TEMP_MESSAGE.id,
         role: ROLES.system,
