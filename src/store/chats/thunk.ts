@@ -1,6 +1,6 @@
 import { AxiosError, isAxiosError } from 'axios'
 import { createAppAsyncThunk } from 'helpers/utils/store'
-import { getChatsList, promptToOpenAI, saveMessage } from 'api/chats/main'
+import { getChatsList, saveMessage } from 'api/chats/main'
 import { appendMessageToChat, confirmAppendedMessage, setChatsList, setIsChatPromptPending } from './slice'
 import { Chat, ChatsSlice, Message } from './types'
 import { ROLES, TEMP_MESSAGE } from 'helpers/constants/chat'
